@@ -48,18 +48,18 @@ pub use tracing_impl::*;
 
 // Note: defmt-rtt cannot be used at the same time as SystemView RTT
 // Stub implementations for defmt
-#[unsafe(no_mangle)]
-pub unsafe extern "C" fn _defmt_write(_bytes: *const u8, _len: usize) {}
+#[no_mangle]
+pub extern "C" fn _defmt_write(_bytes: *const u8, _len: usize) {}
 
-#[unsafe(no_mangle)]
-pub unsafe extern "C" fn _defmt_acquire() -> isize {
+#[no_mangle]
+pub extern "C" fn _defmt_acquire() -> isize {
     0
 }
 
-#[unsafe(no_mangle)]
-pub unsafe extern "C" fn _defmt_release(_token: isize) {}
+#[no_mangle]
+pub extern "C" fn _defmt_release(_token: isize) {}
 
-#[unsafe(no_mangle)]
-pub unsafe extern "C" fn _defmt_timestamp() -> u64 {
+#[no_mangle]
+pub extern "C" fn _defmt_timestamp() -> u64 {
     0
 }
