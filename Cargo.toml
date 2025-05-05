@@ -1,16 +1,18 @@
 [package]
-name = "embedded-rust-template"
+name = "systemview-tracing"
 version = "0.1.0"
 edition = "2021"
 license = "MIT"
-repository = "https://github.com/OpenDevicePartnership/embedded-rust-template"
+repository = "https://github.com/OpenDevicePartnership/systemview-tracing"
 rust-version = "1.85"
 
 [dependencies]
-# dependencies for all targets
-
-[target.'cfg(target_os = "none")'.dependencies]
-# dependencies for no-std targets
+rtos-trace = "0.1.3"
+systemview-target = { version = "0.1.2", features = [
+    "callbacks-app",
+    "callbacks-os",
+    "cortex-m",
+] }
 
 [lints.clippy]
 suspicious = "forbid"
