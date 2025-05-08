@@ -50,17 +50,17 @@ mod tracing_impl {
 
     #[macro_export]
     macro_rules! trace_interrupt {
-    ($($body:tt)*) => {
-        {
-            $crate::isr_enter();
+        ($($body:tt)*) => {
+            {
+                $crate::isr_enter();
 
-            // Execute the actual interrupt handler code
-            $($body)*
+                // Execute the actual interrupt handler code
+                $($body)*
 
-            $crate::isr_exit();
-        }
-    };
-}
+                $crate::isr_exit();
+            }
+        };
+    }
     // Note: defmt-rtt cannot be used at the same time as SystemView RTT
     // Stub implementations for defmt
     #[no_mangle]
