@@ -7,6 +7,8 @@ repository = "https://github.com/OpenDevicePartnership/systemview-tracing"
 rust-version = "1.85"
 
 [dependencies]
+defmt = { version = "1.0.1", optional = true }
+defmt-rtt = "1.0.0"
 rtos-trace = { version = "0.1.3", optional = true }
 systemview-target = { version = "0.1.2", features = [
     "callbacks-app",
@@ -16,7 +18,8 @@ systemview-target = { version = "0.1.2", features = [
 
 [features]
 default = []
-tracing-enabled = ["dep:rtos-trace", "dep:systemview-target"]
+tracing-enabled = ["rtos-trace", "systemview-target"]
+defmt = ["dep:defmt"]
 
 [lints.clippy]
 suspicious = "forbid"

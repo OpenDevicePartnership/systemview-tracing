@@ -57,6 +57,50 @@ mod tracing_impl {
             }
         };
     }
+
+    #[macro_export]
+    macro_rules! trace {
+        ($($arg:tt)*) => {
+            // Do nothing when systemview-tracing is enabled
+        };
+    }
+
+    #[macro_export]
+    macro_rules! debug {
+        ($($arg:tt)*) => {
+            // Do nothing when systemview-tracing is enabled
+        };
+    }
+
+    #[macro_export]
+    macro_rules! info {
+        ($($arg:tt)*) => {
+            // Do nothing when systemview-tracing is enabled
+        };
+    }
+
+    #[macro_export]
+    macro_rules! warn {
+        ($($arg:tt)*) => {
+            // Do nothing when systemview-tracing is enabled
+        };
+    }
+
+    #[macro_export]
+    macro_rules! error {
+        ($($arg:tt)*) => {
+            // Do nothing when systemview-tracing is enabled
+        };
+    }
+
+    #[macro_export]
+    macro_rules! panic {
+        ($($arg:tt)*) => {
+            // Do nothing for the log part, but still panic
+            core::panic!($($arg)*);
+        };
+    }
+
     // Note: defmt-rtt cannot be used at the same time as SystemView RTT
     // Stub implementations for defmt
     #[no_mangle]
@@ -78,8 +122,51 @@ mod tracing_impl {
 
 #[cfg(not(feature = "tracing-enabled"))]
 mod tracing_impl {
+    use defmt_rtt as _;
     pub fn init_tracing(_sysclock: u32) {}
     pub fn mark_trace(_marker: u32) {}
+
+    #[macro_export]
+    macro_rules! trace {
+        ($($arg:tt)*) => {
+            defmt::trace!($($arg)*);
+        };
+    }
+
+    #[macro_export]
+    macro_rules! debug {
+        ($($arg:tt)*) => {
+            defmt::debug!($($arg)*);
+        };
+    }
+
+    #[macro_export]
+    macro_rules! info {
+        ($($arg:tt)*) => {
+            defmt::info!($($arg)*);
+        };
+    }
+
+    #[macro_export]
+    macro_rules! warn {
+        ($($arg:tt)*) => {
+            defmt::warn!($($arg)*);
+        };
+    }
+
+    #[macro_export]
+    macro_rules! error {
+        ($($arg:tt)*) => {
+            defmt::error!($($arg)*);
+        };
+    }
+
+    #[macro_export]
+    macro_rules! panic {
+        ($($arg:tt)*) => {
+            defmt::panic!($($arg)*);
+        };
+    }
 }
 
 // Re-export the implementation functions at the crate root
