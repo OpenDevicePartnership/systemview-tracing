@@ -364,6 +364,8 @@ dependencies = [
 [[package]]
 name = "systemview-target"
 version = "0.1.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "fac27f629c45bad9dbd40481a3dc6cdc633e8f4ddf6d1bad2cf9ad8af4e3e92b"
 dependencies = [
  "bindgen",
  "cc",

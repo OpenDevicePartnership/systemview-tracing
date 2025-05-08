@@ -26,6 +26,3 @@ suspicious = "forbid"
 correctness = "forbid"
 perf = "forbid"
 style = "forbid"
-
-[patch.crates-io]
-systemview-target = { path = "../rtos-trace/systemview_target" }
