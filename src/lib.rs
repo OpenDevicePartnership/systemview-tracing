@@ -35,6 +35,49 @@ mod tracing_impl {
     pub fn mark_trace(marker: u32) {
         rtos_trace::trace::marker(marker);
     }
+
+    pub fn isr_enter() {
+        rtos_trace::trace::isr_enter();
+    }
+
+    pub fn isr_exit() {
+        rtos_trace::trace::isr_exit();
+    }
+
+    pub fn print() {
+        SYSTEMVIEW.print();
+    }
+
+    #[macro_export]
+    macro_rules! trace_interrupt {
+    ($($body:tt)*) => {
+        {
+            $crate::isr_enter();
+
+            // Execute the actual interrupt handler code
+            $($body)*
+
+            $crate::isr_exit();
+        }
+    };
+}
+    // Note: defmt-rtt cannot be used at the same time as SystemView RTT
+    // Stub implementations for defmt
+    #[no_mangle]
+    pub extern "C" fn _defmt_write(_bytes: *const u8, _len: usize) {}
+
+    #[no_mangle]
+    pub extern "C" fn _defmt_acquire() -> isize {
+        0
+    }
+
+    #[no_mangle]
+    pub extern "C" fn _defmt_release(_token: isize) {}
+
+    #[no_mangle]
+    pub extern "C" fn _defmt_timestamp() -> u64 {
+        0
+    }
 }
 
 #[cfg(not(feature = "tracing-enabled"))]
@@ -45,21 +88,3 @@ mod tracing_impl {
 
 // Re-export the implementation functions at the crate root
 pub use tracing_impl::*;
-
-// Note: defmt-rtt cannot be used at the same time as SystemView RTT
-// Stub implementations for defmt
-#[no_mangle]
-pub extern "C" fn _defmt_write(_bytes: *const u8, _len: usize) {}
-
-#[no_mangle]
-pub extern "C" fn _defmt_acquire() -> isize {
-    0
-}
-
-#[no_mangle]
-pub extern "C" fn _defmt_release(_token: isize) {}
-
-#[no_mangle]
-pub extern "C" fn _defmt_timestamp() -> u64 {
-    0
-}
