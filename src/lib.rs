@@ -44,10 +44,6 @@ mod tracing_impl {
         rtos_trace::trace::isr_exit();
     }
 
-    pub fn print() {
-        SYSTEMVIEW.print();
-    }
-
     #[macro_export]
     macro_rules! trace_interrupt {
         ($($body:tt)*) => {
