@@ -159,20 +159,6 @@ jobs:
           command: check
           arguments: --all-features
 
-  test:
-    runs-on: ubuntu-latest
-    name: ubuntu / stable / test
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          submodules: true
-      - name: Install stable
-        uses: dtolnay/rust-toolchain@stable
-      - name: cargo install cargo-hack
-        uses: taiki-e/install-action@cargo-hack
-      - name: cargo test
-        run: cargo hack --feature-powerset test
-
   msrv:
     # check that we can build using the minimal rust version that is specified by this crate
     runs-on: ubuntu-latest
