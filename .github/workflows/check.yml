@@ -17,6 +17,9 @@ jobs:
   fmt:
     runs-on: ubuntu-latest
     name: stable / fmt
+    strategy:
+      matrix:
+        target: [thumbv8m.main-none-eabihf]
     steps:
       - uses: actions/checkout@v4
         with:
@@ -25,6 +28,12 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
         with:
           components: rustfmt
+      - name: Install ARM GCC toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-arm-none-eabi
+      - name: rustup target add ${{ matrix.target }}
+        run: rustup target add ${{ matrix.target }}
       - name: cargo fmt --check
         run: cargo fmt --check
 
@@ -75,12 +84,21 @@ jobs:
     # API be documented as only available in some specific platforms.
     runs-on: ubuntu-latest
     name: nightly / doc
+    strategy:
+      matrix:
+        target: [thumbv8m.main-none-eabihf]
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: true
       - name: Install nightly
         uses: dtolnay/rust-toolchain@nightly
+      - name: Install ARM GCC toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-arm-none-eabi
+      - name: rustup target add ${{ matrix.target }}
+        run: rustup target add ${{ matrix.target }}
       - name: cargo doc
         run: cargo doc --no-deps --all-features
         env:
@@ -91,12 +109,21 @@ jobs:
     # which is required for feature unification
     runs-on: ubuntu-latest
     name: ubuntu / stable / features
+    strategy:
+      matrix:
+        target: [thumbv8m.main-none-eabihf]
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: true
       - name: Install stable
         uses: dtolnay/rust-toolchain@stable
+      - name: Install ARM GCC toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-arm-none-eabi
+      - name: rustup target add ${{ matrix.target }}
+        run: rustup target add ${{ matrix.target }}
       - name: cargo install cargo-hack
         uses: taiki-e/install-action@cargo-hack
       # intentionally no target specifier; see https://github.com/jonhoo/rust-ci-conf/pull/4
@@ -109,12 +136,21 @@ jobs:
     # our dependencies.
     runs-on: ubuntu-latest
     name: ubuntu / stable / deny
+    strategy:
+      matrix:
+        target: [thumbv8m.main-none-eabihf]
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: true
       - name: Install stable
         uses: dtolnay/rust-toolchain@stable
+      - name: Install ARM GCC toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-arm-none-eabi
+      - name: rustup target add ${{ matrix.target }}
+        run: rustup target add ${{ matrix.target }}
       - name: cargo install cargo-deny
         uses: EmbarkStudios/cargo-deny-action@v2
         with:
@@ -145,6 +181,7 @@ jobs:
       fail-fast: false
       matrix:
         msrv: ["1.85"]
+        target: [thumbv8m.main-none-eabihf]
     steps:
       - uses: actions/checkout@v4
         with:
@@ -153,5 +190,11 @@ jobs:
         uses: dtolnay/rust-toolchain@master
         with:
           toolchain: ${{ matrix.msrv }}
+      - name: Install ARM GCC toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-arm-none-eabi
+      - name: rustup target add ${{ matrix.target }}
+        run: rustup target add ${{ matrix.target }}
       - name: cargo +${{ matrix.msrv }} check
         run: cargo check
