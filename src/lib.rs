@@ -113,11 +113,6 @@ mod tracing_impl {
 
     #[no_mangle]
     pub extern "C" fn _defmt_release(_token: isize) {}
-
-    #[no_mangle]
-    pub extern "C" fn _defmt_timestamp() -> u64 {
-        0
-    }
 }
 
 #[cfg(not(feature = "tracing-enabled"))]
