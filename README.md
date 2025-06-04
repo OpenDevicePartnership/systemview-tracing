@@ -29,3 +29,10 @@ To get started with adding SystemView tracing to your Embassy application:
   systemview_tracing::init_tracing(system_clock_frequency)
   ```
   Note: You can find system_clock_frequency by SYS_CLK_FREQ = CORE_CPU_FREQ / 2
+
+  4. Since the `defmt_rtt` crate cannot be used with this crate simultaneously, make sure to add this config flag before any `defmt_rtt` import:
+
+  ```
+  #[cfg(not(feature = "systemview-tracing"))]
+  use defmt_rtt as _;
+  ```
