@@ -1,4 +1,182 @@
 
 # cargo-vet audits file
 
-[audits]
+[[audits.cfg-if]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "1.0.3 -> 1.0.4"
+notes = "Delta: macro refactor to tt-munching. No unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.cfg-if]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "1.0.3 -> 1.0.4"
+notes = "Delta: macro refactor to tt-munching. No unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.defmt]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "0.3.100 -> 0.3.10"
+notes = "Downgrade delta from compat shim to full impl. Unsafe FFI is sound. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.defmt]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "0.3.100 -> 0.3.10"
+notes = "Downgrade delta from compat shim to full impl. Unsafe FFI to logger symbols is sound. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.defmt]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "1.0.1 -> 1.1.0"
+notes = "Delta: Format impls for fmt::Error and Wrapping, xtensa target. No new unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.defmt]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "1.0.1 -> 1.1.0"
+notes = "Delta: Format impls for fmt::Error and Wrapping. No new unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.defmt-macros]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "1.0.1 -> 0.4.0"
+notes = "Downgrade delta: removes configurable defmt crate path. No unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.defmt-macros]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "1.0.1 -> 0.4.0"
+notes = "Downgrade delta: removes configurable defmt crate path. No unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.defmt-macros]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "1.0.1 -> 1.1.0"
+notes = "Delta: adds transparent/bound derive attrs. No unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.defmt-macros]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "1.0.1 -> 1.1.0"
+notes = "Delta: adds transparent/bound derive attrs. No unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.defmt-parser]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "1.0.0 -> 0.4.1"
+notes = "Downgrade delta: removes Cbor display hint variant. No unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.defmt-parser]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "1.0.0 -> 0.4.1"
+notes = "Downgrade delta: removes Cbor display hint variant. No unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.proc-macro2]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "1.0.94 -> 1.0.95"
+notes = "Delta: SourceFile removed, replaced by Span::file(). No unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.proc-macro2]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "1.0.94 -> 1.0.95"
+notes = "Delta: SourceFile removed. No unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.syn]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "2.0.109 -> 2.0.99"
+notes = "Downgrade delta: parser logic adjustments. No new unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.syn]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "2.0.109 -> 2.0.99"
+notes = "Downgrade delta: parser logic adjustments. Pre-existing unsafe unchanged. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.syn]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "2.0.109 -> 2.0.104"
+notes = "Downgrade delta: const trait bound parsing changes. No new unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.syn]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "2.0.109 -> 2.0.104"
+notes = "Downgrade delta: const trait bound parsing changes. No new unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.syn]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "2.0.110 -> 2.0.117"
+notes = "Delta: no_std migration, receiver parsing fix. No new unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.syn]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "2.0.110 -> 2.0.117"
+notes = "Delta: no_std migration, receiver parsing fix. No new unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.thiserror]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "2.0.17 -> 2.0.12"
+notes = "Downgrade delta: build.rs generates versioned __private module. No new unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.thiserror]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "2.0.17 -> 2.0.12"
+notes = "Downgrade delta: simplifies build.rs. No new unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.thiserror]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "2.0.17 -> 2.0.18"
+notes = "Delta: build.rs match-to-let-else refactor. No new unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.thiserror]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "2.0.17 -> 2.0.18"
+notes = "Delta: build.rs match-to-let-else refactor. No new unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.thiserror-impl]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "2.0.17 -> 2.0.12"
+notes = "Downgrade delta: __private module refactor. No unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.thiserror-impl]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "2.0.17 -> 2.0.12"
+notes = "Downgrade delta: __private module refactor. No unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.thiserror-impl]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "2.0.17 -> 2.0.18"
+notes = "Delta: conditional clippy lint allows. No unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.thiserror-impl]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "2.0.17 -> 2.0.18"
+notes = "Delta: conditional clippy lint allows. No unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.unicode-ident]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "1.0.18 -> 1.0.24"
+notes = "Delta: Unicode 16.0->17.0 table update. No unsafe, pure data. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.unicode-ident]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "1.0.18 -> 1.0.24"
+notes = "Delta: Unicode 16.0->17.0 table update. Pure data. Assisted-by: copilot-cli:claude-opus-4.6"
