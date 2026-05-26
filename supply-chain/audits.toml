@@ -1,6 +1,36 @@
 
 # cargo-vet audits file
 
+[[audits.aho-corasick]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "1.1.3"
+notes = "Multi-pattern string matching by BurntSushi. 227 unsafe for SIMD/DFA perf. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.aho-corasick]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "1.1.4"
+notes = "Multi-pattern string matching by BurntSushi. SIMD/DFA optimized. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.bindgen]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "0.60.1"
+notes = "C/C++ binding generator. Unsafe for libclang FFI. build.rs writes to OUT_DIR. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.cc]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "1.2.21"
+notes = "C compiler invocation. Unsafe for jobserver/COM. fs/process is core purpose. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.cc]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "1.2.45"
+notes = "C compiler invocation. Unsafe for jobserver/COM. fs/process is core purpose. Assisted-by: copilot-cli:claude-opus-4.6"
+
 [[audits.cfg-if]]
 who = "Jerry Xie <jerryxie@microsoft.com>"
 criteria = "safe-to-deploy"
@@ -12,6 +42,18 @@ who = "Jerry Xie <jerryxie@microsoft.com>"
 criteria = "safe-to-deploy"
 delta = "1.0.3 -> 1.0.4"
 notes = "Delta: macro refactor to tt-munching. No unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.clang-sys]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "1.8.1"
+notes = "Libclang bindings. Unsafe for FFI. build.rs finds libclang. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.cty]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "0.2.2"
+notes = "C type aliases. No unsafe, no deps. Assisted-by: copilot-cli:claude-opus-4.6"
 
 [[audits.cty]]
 who = "Jerry Xie <jerryxie@microsoft.com>"
@@ -85,11 +127,53 @@ criteria = "safe-to-deploy"
 version = "1.3.0"
 notes = "Full: lazy cell. Proper atomic CAS. Assisted-by: copilot-cli:claude-opus-4.6"
 
+[[audits.lazycell]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "1.3.0"
+notes = "Lazy cell. Proper atomic CAS for AtomicLazyCell. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.libc]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "0.2.172"
+notes = "C stdlib FFI types. 416 unsafe for extern declarations. build.rs detects platform. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.libloading]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "0.8.6"
+notes = "Dynamic library loading. Unsafe for dlopen/dlsym FFI. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.memchr]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "2.7.4"
+notes = "Optimized byte searching by BurntSushi. 326 unsafe for SIMD. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.memchr]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "2.7.6"
+notes = "Optimized byte searching by BurntSushi. 332 unsafe for SIMD. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.minimal-lexical]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "0.2.1"
+notes = "Float parsing. Unsafe for bounded table access. Assisted-by: copilot-cli:claude-opus-4.6"
+
 [[audits.minimal-lexical]]
 who = "Jerry Xie <jerryxie@microsoft.com>"
 criteria = "safe-to-deploy"
 version = "0.2.1"
 notes = "Full: float parsing. Bounded table access. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.proc-macro2]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "1.0.102"
+notes = "Proc macro tokens by dtolnay. 6 unsafe for perf. Assisted-by: copilot-cli:claude-opus-4.6"
 
 [[audits.proc-macro2]]
 who = "Jerry Xie <jerryxie@microsoft.com>"
@@ -103,11 +187,41 @@ criteria = "safe-to-deploy"
 delta = "1.0.94 -> 1.0.95"
 notes = "Delta: SourceFile removed. No unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
 
+[[audits.quote]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "1.0.41"
+notes = "Quasiquoting by dtolnay. No unsafe. build.rs probes rustc. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.regex]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "1.11.1"
+notes = "Regex by BurntSushi. 1 unsafe for Searcher impl. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.regex-automata]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "0.4.9"
+notes = "Regex engine by BurntSushi. 58 unsafe for DFA perf. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.regex-automata]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "0.4.13"
+notes = "Regex engine by BurntSushi. Unsafe for DFA perf. Assisted-by: copilot-cli:claude-opus-4.6"
+
 [[audits.rtos-trace]]
 who = "Jerry Xie <jerryxie@microsoft.com>"
 criteria = "safe-to-deploy"
 version = "0.1.3"
 notes = "Full: RTOS tracing traits. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.rtos-trace]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "0.1.3"
+notes = "RTOS tracing traits. Unsafe FFI dispatch. Assisted-by: copilot-cli:claude-opus-4.6"
 
 [[audits.syn]]
 who = "Jerry Xie <jerryxie@microsoft.com>"
@@ -156,6 +270,12 @@ who = "Jerry Xie <jerryxie@microsoft.com>"
 criteria = "safe-to-deploy"
 version = "0.1.2"
 notes = "Full: SEGGER SystemView FFI. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.systemview-target]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "0.1.2"
+notes = "SEGGER SystemView FFI. build.rs uses bindgen+cc. Assisted-by: copilot-cli:claude-opus-4.6"
 
 [[audits.thiserror]]
 who = "Jerry Xie <jerryxie@microsoft.com>"
@@ -208,6 +328,12 @@ notes = "Delta: conditional clippy lint allows. No unsafe. Assisted-by: copilot-
 [[audits.unicode-ident]]
 who = "Jerry Xie <jerryxie@microsoft.com>"
 criteria = "safe-to-deploy"
+version = "1.0.20"
+notes = "Unicode identifier tables by dtolnay. 2 unsafe for table lookup. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.unicode-ident]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
 delta = "1.0.18 -> 1.0.24"
 notes = "Delta: Unicode 16.0->17.0 table update. No unsafe, pure data. Assisted-by: copilot-cli:claude-opus-4.6"
 
@@ -216,3 +342,105 @@ who = "Jerry Xie <jerryxie@microsoft.com>"
 criteria = "safe-to-deploy"
 delta = "1.0.18 -> 1.0.24"
 notes = "Delta: Unicode 16.0->17.0 table update. Pure data. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.windows-targets]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "0.48.5"
+notes = "Windows link macro. No unsafe. Microsoft. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.windows-targets]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "0.52.6"
+notes = "Windows link macro. No unsafe, no build.rs. Microsoft. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.windows_aarch64_gnullvm]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "0.48.5"
+notes = "Windows import library. Trivial build.rs sets link-search. Microsoft. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.windows_aarch64_gnullvm]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "0.52.6"
+notes = "Windows import library. Trivial build.rs sets link-search. Microsoft. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.windows_aarch64_msvc]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "0.48.5"
+notes = "Windows import library. Trivial build.rs sets link-search. Microsoft. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.windows_aarch64_msvc]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "0.52.6"
+notes = "Windows import library. Trivial build.rs sets link-search. Microsoft. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.windows_i686_gnu]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "0.48.5"
+notes = "Windows import library. Trivial build.rs sets link-search. Microsoft. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.windows_i686_gnu]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "0.52.6"
+notes = "Windows import library. Trivial build.rs sets link-search. Microsoft. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.windows_i686_gnullvm]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "0.52.6"
+notes = "Windows import library. Trivial build.rs sets link-search. Microsoft. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.windows_i686_msvc]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "0.48.5"
+notes = "Windows import library. Trivial build.rs sets link-search. Microsoft. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.windows_i686_msvc]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "0.52.6"
+notes = "Windows import library. Trivial build.rs sets link-search. Microsoft. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.windows_x86_64_gnu]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "0.48.5"
+notes = "Windows import library. Trivial build.rs sets link-search. Microsoft. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.windows_x86_64_gnu]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "0.52.6"
+notes = "Windows import library. Trivial build.rs sets link-search. Microsoft. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.windows_x86_64_gnullvm]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "0.48.5"
+notes = "Windows import library. Trivial build.rs sets link-search. Microsoft. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.windows_x86_64_gnullvm]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "0.52.6"
+notes = "Windows import library. Trivial build.rs sets link-search. Microsoft. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.windows_x86_64_msvc]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "0.48.5"
+notes = "Windows import library. Trivial build.rs sets link-search. Microsoft. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.windows_x86_64_msvc]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "0.52.6"
+notes = "Windows import library. Trivial build.rs sets link-search. Microsoft. Assisted-by: copilot-cli:claude-opus-4.6"
